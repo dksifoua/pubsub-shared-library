@@ -1,4 +1,4 @@
-def call(Closure body) {
+def call() {
     node {
         stage('Clone') {
             steps {
@@ -13,7 +13,5 @@ def call(Closure body) {
                     --trusted-host files.pythonhosted.org --trusted-host pypi.org"""
             }
         }
-
-        body()
     }
 }
