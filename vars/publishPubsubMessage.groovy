@@ -1,4 +1,4 @@
-def call(String projectId, String topicId, String message) {
-    sh """python -m forest.pubsub.publish --project_id=${projectId} \
-            --topic_id=${topicId} --message=${message}"""
+def call(Map params) {
+    sh """python -m forest.pubsub.publish --project_id=${params.projectId} \
+            --topic_id=${params.topicId} --message=${params.message}"""
 }
