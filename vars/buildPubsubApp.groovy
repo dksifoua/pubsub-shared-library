@@ -4,4 +4,6 @@ def call() {
 
     sh """python -m pip install google-cloud-pubsub --trusted-host pypi.python.org \
             --trusted-host files.pythonhosted.org --trusted-host pypi.org"""
+
+    sh """pip install --extra-index-url=https://:@nexus.bnc.ca/repository/9202-pypi-production/simple forest-logging"""
 }
