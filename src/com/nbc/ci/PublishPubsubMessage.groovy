@@ -14,7 +14,7 @@ class PublishPubsubMessage {
     def install() {
         def credentials = "${this.nexusUser}:${this.nexusPassword}"
         def extraIndexUrl = "https://${credentials}@nexus.bnc.ca/repository/9202-pypi-production-local/simple"
-        this.steps.sh("pip install --extra-index-url ${extraIndexUrl} forest")
+        this.steps.sh("python -m pip install --extra-index-url ${extraIndexUrl} forest")
     }
 
     def publish(String projectId, String topicId, String message) {
