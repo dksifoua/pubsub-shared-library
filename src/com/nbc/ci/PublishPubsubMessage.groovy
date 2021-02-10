@@ -8,8 +8,10 @@ class PublishPubsubMessage {
     PublishPubsubMessage(Object steps, String nexusUser, String nexusPassword) {
         this.steps = steps
         this.nexusUser = nexusUser
-        this.nexusPassword = nexusPassword
-
+        this.nexusPassword = nexusPassword       
+    }
+    
+    def install() {
         def credentials = "${this.nexusUser}:${this.nexusPassword}"
         def extraIndexUrl = "https://${credentials}@nexus.bnc.ca/repository/9202-pypi-production-local/simple"
         this.steps.sh("pip install --extra-index-url ${extraIndexUrl} forest")
