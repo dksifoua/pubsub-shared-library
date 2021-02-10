@@ -4,14 +4,14 @@ import com.nbc.helpers.ExecutionEnvironment
 
 class PublishPubsubMessage {
     protected Object steps
-    protected ExecutionEnvironment executionEnvironment
+    protected Object executionEnvironment
     private String nexusUser
     private String nexusPassword
     private String projectId
     private String topicId
     private String message
 
-    PublishPubsubMessage(Object steps, ExecutionEnvironment executionEnvironment, String nexusUser, String nexusPassword,
+    PublishPubsubMessage(Object steps, Object executionEnvironment, String nexusUser, String nexusPassword,
                          String projectId, String topicId, String message) {
         this.steps = steps
         this.executionEnvironment = executionEnvironment
