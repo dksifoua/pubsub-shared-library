@@ -1,7 +1,5 @@
 package com.nbc.ci
 
-import com.nbc.helpers.ExecutionEnvironment
-
 class PublishPubsubMessage {
     protected Object steps
     protected Object executionEnvironment
