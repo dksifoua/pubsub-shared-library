@@ -18,6 +18,8 @@ class PublishPubsubMessage {
     }
 
     def publish(String projectId, String topicId, String message) {
+        def forestInstalled = this.steps.sh(script: "python -c \"from forest.pubsub.publisher import Publisher\"", returnStdout: true).trim()
+        echo "Is Forest installed? [${forestInstalled}]"
         this.steps.sh("python -m forest.pubsub.publish --project_id=${projectId} --topic_id=${topicId} " +
                     "--message=${message}")
     }
