@@ -19,9 +19,7 @@ class PublishPubsubMessage {
 
     def publish(String projectId, String topicId, String message) {
         def isForestInstalled = this.steps.sh(script: "python -c \"from forest.pubsub.publisher import Publisher\"", returnStdout: true).trim()
-        if(isForestInstalled.length() == 0) {
-            this.steps.echo("Is Forest installed? [${isForestInstalled} || yes!]")
-        } else {
+        if(!(isForestInstalled.length() == 0)) {
             this.install()
         }
         this.steps.sh("python -m forest.pubsub.publish --project_id=${projectId} --topic_id=${topicId} " +
