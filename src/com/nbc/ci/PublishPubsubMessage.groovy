@@ -8,7 +8,9 @@ class PublishPubsubMessage {
     PublishPubsubMessage(Object steps, String nexusUser, String nexusPassword) {
         this.steps = steps
         this.nexusUser = nexusUser
-        this.nexusPassword = nexusPassword       
+        this.nexusPassword = nexusPassword
+        
+        this.install()
     }
     
     private void install() {
@@ -18,10 +20,10 @@ class PublishPubsubMessage {
     }
 
     def publish(String projectId, String topicId, String message) {
-        def isForestInstalled = this.steps.sh(script: "python -c \"from forest.pubsub.publisher import Publisher\"", returnStdout: true).trim()
+        /** def isForestInstalled = this.steps.sh(script: "python -c \"from forest.pubsub.publisher import Publisher\"", returnStdout: true).trim()
         if(!(isForestInstalled.length() == 0)) {
             this.install()
-        }
+        } */
         this.steps.sh("python -m forest.pubsub.publish --project_id=${projectId} --topic_id=${topicId} " +
                     "--message=${message}")
     }
