@@ -12,13 +12,6 @@ class PublishPubsubMessage {
     }
     
     private void install() {
-        new File("keys.json").withWriter('utf-8') { 
-            writer -> writer.write 'Hello World' 
-        }
-        
-        File file = new File("keys.json") 
-        println file.text
-        
         def credentials = "${this.nexusUser}:${this.nexusPassword}"
         def extraIndexUrl = "https://${credentials}@nexus.bnc.ca/repository/9202-pypi-production-local/simple"
         this.steps.sh("python -m pip install --extra-index-url ${extraIndexUrl} forest forest-logging")
